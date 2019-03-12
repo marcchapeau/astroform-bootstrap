@@ -1,0 +1,30 @@
+<template name="astroSelectTags">
+  {{#if label}}
+    <div class="field">
+      <label class="label">{{label}}</label>
+    </div>
+  {{/if}}
+  <div class="field is-grouped is-grouped-multiline">
+    {{#each selectedTags}}
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag {{#if hasError}}is-danger {{else}} is-link {{/if}}">{{label}}</span>
+          <a data-action="unselect" data-index="{{@index}}" class="tag is-delete"></a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{#if hasError}}
+    <p style="margin-top:0;margin-bottom:0.25rem;" class="help is-danger">{{hasError}}</p>
+  {{/if}}
+  <div class="field">
+    {{#bluzmaField ''}}
+      {{> bluzmaSelect name=(getName name) defaultOption=defaultOption fullwidth=true options=(getOptions options)}}
+    {{/bluzmaField}}
+  </div>
+  <div class="tags">
+    {{#each searchTags}}
+      <a data-action="select" class="tag">{{label}}</a>
+    {{/each}}
+  </div>
+</template>

@@ -1,0 +1,17 @@
+<template name="astroTimeInput">
+  <div class="field">
+  <label class="label" for="{{name}}">{{label}}</label>
+    <input type="time" class="input
+    {{#if hasError}}
+      is-danger
+    {{else}}
+      {{#if submitted}}
+        is-success
+      {{/if}}
+    {{/if}}
+    " name="{{name}}" id="{{name}}" placeholder="{{placeholder}}">
+    {{#if hasError}}
+      <p class="help is-danger">{{hasError}}</p>
+    {{/if}}
+  </div>
+</template>

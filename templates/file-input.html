@@ -1,0 +1,52 @@
+
+<template name="astroFileInput">
+  <div class="field">
+    <label class="label">{{label}}</label>
+    {{#if currentFile}}
+      {{#with previewContext}}
+        {{> preview}}
+      {{/with}}
+    {{else}}
+      {{#if currentUpload}}
+        <div class="columns">
+          <div class="column is-10">
+            <progress class="progress is-success" value="{{currentUpload.progress.get}}" max="100">60%</progress>
+          </div>
+          <div class="column">
+            <button type="button" class="button is-outlined is-danger" style="margin-left:0.5rem;" data-action="cancelUpload">
+              <i class="fal fa-times"></i>
+            </button>
+          </div>
+        </div>
+      {{else}}
+        <div class="file">
+          <label class="file-label">
+            <input class="file-input" type="file" name="{{name}}">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fal fa-upload"></i>
+              </span>
+              <span class="file-label">
+                {{fileLabel}}
+              </span>
+            </span>
+          </label>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+</template>
+
+
+<template name="astroFileInputPreview">
+  <div class="field has-addons">
+    <p class="control is-expanded">
+      <input class="input" disabled="disabled" value="{{currentFile.name}}">
+    </p>
+    <div class="control">
+      <button type="button" class="button is-danger" data-action="afDeleteFile">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,34 @@
+<template name="astroInput">
+  <div class="form-group {{#if horizontal}}row{{/if}}">
+    <label for="{{id}}" class="{{#if horizontal}}col-sm-2 col-form-label{{/if}} {{#if required}}required{{/if}}">{{label}}</label>
+    <div class="{{#if horizontal}}col-sm-10{{/if}}">
+      {{#unless isTextarea}}
+        <input
+          type="{{type}}"
+          class="form-control {{#if hasError}}is-invalid{{else}}{{#if submitted}}is-valid{{/if}}{{/if}}"
+          id="{{id}}"
+          name="{{name}}"
+          disabled="{{disabled}}"
+          value="{{value}}"
+          placeholder="{{placeholder}}"
+        >
+      {{else}}
+        <textarea
+          class="form-control {{#if hasError}}is-invalid{{else}}{{#if submitted}}is-valid{{/if}}{{/if}}"
+          id="{{id}}"
+          name="{{name}}"
+          disabled="{{disabled}}"
+          placeholder="{{placeholder}}"
+          cols="{{cols}}"
+          rows="{{rows}}"
+        >{{value}}</textarea>
+      {{/unless}}
+      {{#if help}}
+        <small class="form-text text-muted">{{help}}</small>
+      {{/if}}
+      {{#if hasError}}
+        <div class="invalid-feedback">{{hasError}}</div>
+      {{/if}}
+    </div>
+  </div>
+</template>

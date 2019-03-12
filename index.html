@@ -1,0 +1,9 @@
+<template name="astroForm">
+  <form id="{{formId}}" class="{{class}}" novalidate>
+    {{> Template.contentBlock data}}
+  </form>
+</template>
+
+<template name="astroField">
+  {{> Template.dynamic template=template data=data}}
+</template>

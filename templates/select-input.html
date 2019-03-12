@@ -1,0 +1,18 @@
+<template name="astroSelectInput">
+  <div class="field">
+    <label class="label" for="{{name}}">{{label}}</label>
+    <div class="control">
+      <div class="select is-fullwidth {{#if hasError}}is-danger{{else}}{{#if submitted}}is-success{{/if}}{{/if}}">
+        <select name="{{name}}" id="{{name}}">
+          <option value=""></option>
+          {{#each options}}
+            <option value="{{value}}" disabled="{{disabled}}" selected="{{#if isSelected}}selected{{/if}}">{{label}}</option>
+          {{/each}}
+        </select>
+      </div>
+      {{#if hasError}}
+        <p class="help is-danger">{{hasError}}</p>
+      {{/if}}
+    </div>
+  </div>
+</template>

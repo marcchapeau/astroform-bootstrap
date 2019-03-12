@@ -1,0 +1,13 @@
+<template name="astroTextArea">
+  <div class="field">
+  <label class="label" for="{{name}}">{{label}}</label>
+  <textarea class="textarea {{#if hasError}}is-danger{{else}}{{#if submitted}}is-success{{/if}}{{/if}}"
+    id="{{name}}" name="{{name}}"
+    rows="{{#if rows}}{{rows}}{{/if}}"
+    cols="{{#if cols}}{{cols}}{{/if}}"
+    placeholder="{{placeholder}}"></textarea>
+  {{#if hasError}}
+    <p class="help is-danger">{{hasError}}</p>
+  {{/if}}
+  </div>
+</template>

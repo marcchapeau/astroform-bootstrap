@@ -1,0 +1,68 @@
+<template name="astroDatePicker">
+  <!-- <div class="columns">
+    <div class="column">
+      <div class="field">
+        <label class="label">{{dateLabel}}</label>
+        <input type="date" class="input date
+          {{#if hasError}}
+            is-danger
+          {{else}}
+            {{#if astroForm.get.submitted}}
+              is-success
+            {{/if}}
+          {{/if}}
+          " name="date{{name}}" id="date{{name}}" placeholder="{{placeholder}}">
+          <p class="help is-danger">{{hasError}}</p>
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <label class="label">{{hourLabel}}</label>
+        <input type="time" class="input hour
+          {{#if hasError}}
+            is-danger
+          {{else}}
+            {{#if astroForm.get.submitted}}
+              is-success
+            {{/if}}
+          {{/if}}
+          " name="hour{{name}}" id="hour{{name}}" placeholder="{{placeholder}}">
+          <p class="help is-danger">{{hasError}}</p>
+      </div>
+    </div>
+  </div> -->
+  <div class="field is-horizontal">
+    <div class="field-label is-normal has-text-left">
+      <label class="label">{{label}}</label>
+    </div>
+    <div class="field-body">
+      <div class="field">
+        <p class="control is-expanded">
+          <input type="date" class="input date
+          {{#if hasError}}
+            is-danger
+          {{else}}
+            {{#if submitted}}
+              is-success
+            {{/if}}
+          {{/if}}
+          " name="date{{name}}" id="date{{name}}" placeholder="{{placeholder}}">
+          <p class="help is-danger">{{hasError}}</p>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control is-expanded">
+          <input type="time" class="input hour
+          {{#if hasError}}
+            is-danger
+          {{else}}
+            {{#if submitted}}
+              is-success
+            {{/if}}
+          {{/if}}
+          " name="hour{{name}}" id="hour{{name}}" placeholder="{{placeholder}}">
+        </p>
+      </div>
+    </div>
+  </div>
+</template>

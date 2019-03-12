@@ -1,0 +1,16 @@
+<template name="astroNumberInput">
+  <div class="field">
+    <label class="label" for="{{name}}">{{label}}</label>
+    <input type="number" class="input
+	    {{#if hasError}}
+	      is-danger
+	    {{else}}
+	      {{#if submitted}}
+	        is-success
+	      {{/if}}
+	    {{/if}}" id="{{name}}" step="{{step}}" value="{{value}}" disabled="{{disabled}}" name="{{name}}" max={{max}} min={{min}}>
+    {{#if hasError}}
+      <p class="help is-danger">{{hasError}}</p>
+    {{/if}}
+  </div>
+</template>

@@ -1,0 +1,44 @@
+<template name="astroSearchTags">
+  {{#if label}}
+    <div class="field">
+      <label class="label">{{label}}</label>
+    </div>
+  {{/if}}
+  <div class="field is-grouped is-grouped-multiline">
+    {{#each selectedTags}}
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag {{#if hasError}}is-danger {{else}} is-link {{/if}}">{{label}}</span>
+          <a data-action="unselect" data-index="{{@index}}" class="tag is-delete"></a>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  {{#if hasError}}
+    <p style="margin-top:0;margin-bottom:0.25rem;" class="help is-danger">{{hasError}}</p>
+  {{/if}}
+  <div class="field">
+    <input type="text" autocomplete="off" name="{{name}}" class="input" placeholder="{{placeholder}}">
+  </div>
+  {{#if search}}
+    {{#unless searching}}
+      {{#if searchTags.length}}
+        <div class="tags" style="margin-bottom: 0.25rem;">
+          {{#each searchTags}}
+            <a data-action="select" class="tag">{{label}}</a>
+          {{/each}}
+        </div>
+      {{else}}
+        <div class="has-text-centered has-text-weight-light" style="margin-bottom: 0.75rem;">
+          {{#if noResultsLabel}}{{noResultsLabel}}{{else}}No results{{/if}}
+        </div>
+      {{/if}}
+    {{else}}
+      <div class="has-text-centered" style="margin-bottom: 0.75rem;">
+        <span class="icon">
+          <i class="far fa-spinner-third fa-spin"></i>
+        </span>
+      </div>
+    {{/unless}}
+  {{/if}}
+</template>
