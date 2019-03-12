@@ -1,4 +1,4 @@
-import { Astroform } from 'meteor/astroform'
+import { Astroform } from 'meteor/chap:astroform'
 import { Template } from 'meteor/templating'
 import { Random } from 'meteor/random'
 
