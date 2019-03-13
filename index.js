@@ -43,13 +43,14 @@ Template.astroForm.onCreated(function () {
     const fields = this.form.fields.all()
     let submitted
     Tracker.nonreactive(() => { submitted = this.form.submitted.get() })
+    let change = false
     Object.keys(fields).forEach(key => {
       if (this.form.doc[key] !== fields[key]) {
         this.form.doc[key] = fields[key]
-        if (!submitted) return
-        this.validate()
+        change = true
       }
     })
+    if (submitted && change) this.validate()
   })
 })
 
@@ -107,6 +108,6 @@ Template.astroField.helpers({
       // email: 'astroTextInput',
       // checkbox: 'astroCheckboxInput'
     }
-    return templates[type]
+    return templates[type] || 'astroInput'
   }
 })
