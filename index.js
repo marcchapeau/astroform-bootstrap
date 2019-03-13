@@ -90,7 +90,9 @@ Template.astroField.helpers({
   template () {
     const type = this.type || 'text'
     const templates = {
+      email: 'astroInput',
       number: 'astroInput',
+      password: 'astroInput',
       text: 'astroInput',
       // file: 'astroFileInput',
       // datePicker: 'astroDatePicker',
