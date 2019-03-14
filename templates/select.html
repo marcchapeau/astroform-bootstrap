@@ -1,0 +1,24 @@
+<template name="astroSelect">
+  <div class="form-group {{#if horizontal}}row{{/if}}">
+    <label for="{{id}}" class="{{#if horizontal}}col-sm-2 col-form-label{{/if}} {{#if required}}required{{/if}}">{{label}}</label>
+    <div class="{{#if horizontal}}col-sm-10{{/if}}">
+      <select
+        class="custom-select {{#if hasError}}is-invalid{{else}}{{#if submitted}}is-valid{{/if}}{{/if}}"
+        id="{{id}}"
+        name="{{name}}"
+        disabled="{{disabled}}"
+      >
+        <option value=""></option>
+        {{#each option in options}}
+          <option value="{{option.value}}" disabled="{{option.disabled}}" selected="{{#if isSelected option.value}}selected{{/if}}">{{option.label}}</option>
+        {{/each}}
+      </select>
+      {{#if help}}
+        <small class="form-text text-muted">{{help}}</small>
+      {{/if}}
+      {{#if hasError}}
+        <div class="invalid-feedback">{{hasError}}</div>
+      {{/if}}
+    </div>
+  </div>
+</template>

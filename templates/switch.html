@@ -1,0 +1,16 @@
+<template name="astroSwitch">
+  <div class="form-group {{#if horizontal}}row{{/if}}">
+    <div class="{{#if horizontal}}offset-sm-2 col-sm-10{{/if}}">
+      <div class="custom-control custom-switch {{#if hasError}}is-invalid{{else}}{{#if submitted}}is-valid{{/if}}{{/if}}">
+        <input type="checkbox" class="custom-control-input" id="{{id}}" name="{{name}}" checked="{{checked}}">
+        <label class="custom-control-label" for="{{id}}">{{label}}</label>
+      </div>
+      {{#if help}}
+        <small class="form-text text-muted">{{help}}</small>
+      {{/if}}
+      {{#if hasError}}
+        <div class="invalid-feedback">{{hasError}}</div>
+      {{/if}}
+    </div>
+  </div>
+</template>

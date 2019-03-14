@@ -5,24 +5,24 @@ import { ValidationError } from 'meteor/jagi:astronomy'
 import { Tracker } from 'meteor/tracker'
 
 import './templates/input'
+import './templates/select'
+import './templates/switch'
 import './index.html'
 
 Template.astroForm.onCreated(function () {
   this.astro = this.data.astro
-  this.doc = this.data.doc
+  const Astro = this.astro
+  this.doc = this.data.doc instanceof Astro ? this.data.doc : new Astro(this.data.doc)
   this.formId = this.data.id
   this.horizontal = this.data.horizontal
   this.validateOptions = this.data.validateOptions
   this.form = Astroform.addForm(this.formId, this.astro, this.doc)
   this.validate = (submit = false) => {
     this.form.errors.clear()
-    const Astro = this.form.astro
-    let instance = new Astro(this.form.doc, { defaults: true, cast: true })
     if (submit && this.form.hooks['formToClass']) {
-      instance = this.form.hooks['formToClass'].call(instance)
-      if (!instance) return
+      if (this.form.hooks['formToClass'].call(this.doc) === false) return
     }
-    instance.validate({ stopOnFirstError: false, ...this.validateOptions }, err => {
+    this.doc.validate({ cast: true, stopOnFirstError: false, ...this.validateOptions }, err => {
       if (err && !ValidationError.is(err)) {
         throw new Meteor.Error(err)
       } else if (err) {
@@ -30,11 +30,11 @@ Template.astroForm.onCreated(function () {
           this.form.errors.set(detail.name, detail.message)
         })
         if (submit && this.form.hooks['onError']) {
-          this.form.hooks['onError'].call(instance, this.form.errors.all())
+          this.form.hooks['onError'].call(this.doc, this.form.errors.all())
         }
       } else {
         if (submit && this.form.hooks['onSuccess']) {
-          this.form.hooks['onSuccess'].call(instance)
+          this.form.hooks['onSuccess'].call(this.doc)
         }
       }
     })
@@ -94,6 +94,8 @@ Template.astroField.helpers({
       email: 'astroInput',
       number: 'astroInput',
       password: 'astroInput',
+      select: 'astroSelect',
+      switch: 'astroSwitch',
       text: 'astroInput',
       // file: 'astroFileInput',
       // datePicker: 'astroDatePicker',
