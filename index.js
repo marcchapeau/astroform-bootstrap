@@ -5,6 +5,7 @@ import { ValidationError } from 'meteor/jagi:astronomy'
 import { Tracker } from 'meteor/tracker'
 
 import './templates/input'
+import './templates/markdown'
 import './templates/select'
 import './templates/switch'
 import './index.html'
@@ -92,11 +93,12 @@ Template.astroField.helpers({
     const type = this.type || 'text'
     const templates = {
       email: 'astroInput',
+      markdown: 'astroMarkdown',
       number: 'astroInput',
       password: 'astroInput',
       select: 'astroSelect',
       switch: 'astroSwitch',
-      text: 'astroInput',
+      text: 'astroInput'
       // file: 'astroFileInput',
       // datePicker: 'astroDatePicker',
       // hidden: 'astroHiddenInput',

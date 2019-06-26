@@ -1,0 +1,40 @@
+<template name="astroMarkdown">
+  <div class="form-group {{#if horizontal}}row{{/if}}">
+    <label for="{{id}}" class="{{#if horizontal}}col-sm-2 col-form-label{{/if}} {{#if required}}required{{/if}}">{{label}}</label>
+    <div class="{{#if horizontal}}col-sm-10{{/if}}">
+      <div class="card {{#if hasError}}border-danger{{else}}{{#if submitted}}border-success{{/if}}{{/if}}">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link {{#unless preview}}active disabled{{/unless}}" href="" js-toggle>Raw</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{#if preview}}active disabled{{/if}}" href="" js-toggle>Preview</a>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          {{#unless preview}}
+            <textarea
+              class="form-control"
+              id="{{id}}"
+              name="{{name}}"
+              disabled="{{disabled}}"
+              placeholder="{{placeholder}}"
+              cols="{{cols}}"
+              rows="{{rows}}"
+            >{{value}}</textarea>
+          {{else}}
+            {{#markdown}}{{value}}{{/markdown}}
+          {{/unless}}
+        </div>
+      </div>
+      {{#if help}}
+        <small class="form-text text-muted">{{help}}</small>
+      {{/if}}
+      {{#if hasError}}
+        <div class="invalid-feedback">{{hasError}}</div>
+      {{/if}}
+    </div>
+  </div>
+</template>

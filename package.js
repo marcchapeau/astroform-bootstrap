@@ -17,6 +17,7 @@ Package.onUse(function (api) {
     'templating@1.3.2',
     'chap:astroform@0.0.1',
     'jagi:astronomy@2.7.1',
+    'mvinc:markdown@0.0.3',
     'ostrio:files@1.9.11'
   ], 'client')
   api.mainModule('index.js', 'client')
