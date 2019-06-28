@@ -25,7 +25,6 @@ Template.astroMarkdown.helpers({
     return instance.form.errors.get(instance.name)
   },
   id: () => Template.instance().id,
-  isTextarea () { return this.cols || this.rows },
   preview: () => Template.instance().preview.get(),
   required () {
     const instance = Template.instance()
