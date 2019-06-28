@@ -86,7 +86,6 @@ Template.astroField.helpers({
   data () {
     let data = Template.instance().data
     const field = Astroform.forms[data.formId].astro.getField(data.name)
-    console.log(field)
     if (field.astroform) data = { ...field.astroform, ...data }
     return data
   },
