@@ -1,6 +1,6 @@
 Package.describe({
   name: 'chap:astroform-bootstrap',
-  version: '0.0.4',
+  version: '0.0.5',
   summary: 'Bootstrap templating for chap:astroform',
   documentation: 'README.md'
 })
